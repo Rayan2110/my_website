@@ -15,7 +15,7 @@ body {
 }
 
 a {
-  color: #149ddd;
+  color: #050b13;
   text-decoration: none;
 }
 
@@ -1076,7 +1076,7 @@ section {
 --------------------------------------------------------------*/
 #footer {
   padding: 15px;
-  color: #f4f6fd;
+  color: #050b13;
   font-size: 14px;
   position: fixed;
   left: 0;
@@ -1094,7 +1094,7 @@ section {
   padding-top: 5px;
   text-align: center;
   font-size: 13px;
-  color: #eaebf0;
+  color: #050b13;
 }
 
 @media (max-width: 1199px) {
