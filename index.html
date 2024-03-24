@@ -559,15 +559,14 @@
                 <label for="name">Message</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">
-                  <p id="my-form-status"></p>
-                </div>
-              </div>
               <!-- your other form fields go here -->
-              <div class="text-center"><button type="submit">Envoyer</button></div>
+              <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="6Lfj9KIpAAAAAMIntw8SFmgBu6S9e1huJr-QDJVb"></div>
+              </div>
+              <div class="text-center">
+                <button type="submit">Envoyer</button>
+                <div class="sent-message">
+                </div>
             </form>
             <script>
               var form = document.getElementById("my-form");
