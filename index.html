@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>iPortfolio Bootstrap Template - Index</title>
+  <title>Rayan Kallal</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/rkfavicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -67,7 +67,8 @@
                 projets</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Mes expériences
                 professionnelles</span></a></li>
-          <li><a href="#testimonials" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Témoignages</span></a></li>
+          <li><a href="#testimonials" class="nav-link scrollto"><i class="bx bx-book-content"></i>
+              <span>Témoignages</span></a></li>
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -540,7 +541,7 @@
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
             <!-- modify this form HTML and place wherever you want your form -->
-            <form action="https://formspree.io/f/mleqwekd" method="POST" class="php-email-form">
+            <form id="my-form" action="https://formspree.io/f/mleqwekd" method="POST" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Votre Nom</label>
@@ -562,11 +563,45 @@
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Votre message a bien été envoyé. Merci!</div>
+                <div class="sent-message">
+                  <p id="my-form-status"></p>
+                </div>
               </div>
               <!-- your other form fields go here -->
               <div class="text-center"><button type="submit">Envoyer</button></div>
             </form>
+            <script>
+              var form = document.getElementById("my-form");
+
+              async function handleSubmit(event) {
+                event.preventDefault();
+                var status = document.getElementById("my-form-status");
+                var data = new FormData(event.target);
+                fetch(event.target.action, {
+                  method: form.method,
+                  body: data,
+                  headers: {
+                    'Accept': 'application/json'
+                  }
+                }).then(response => {
+                  if (response.ok) {
+                    status.innerHTML = "Email envoyé Merci !";
+                    form.reset()
+                  } else {
+                    response.json().then(data => {
+                      if (Object.hasOwn(data, 'errors')) {
+                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                      } else {
+                        status.innerHTML = "Oops! Il y'a eu un problème"
+                      }
+                    })
+                  }
+                }).catch(error => {
+                  status.innerHTML = "Oops! Il y'a eu un problème"
+                });
+              }
+              form.addEventListener("submit", handleSubmit)
+            </script>
           </div>
 
         </div>
